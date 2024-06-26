@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        BMW M Motorsports
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .container 
+        {
+            max-width: 600px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 10px;
+            position: relative; 
+        }
+        .m-logo 
+        {
+            position: absolute;
+            bottom: -10px;
+            right: 250px;
+            width: 120px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">BMW ///M Motorsports Application</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" required>
+                <small class="form-text text-muted">Password must contain a special character (! or ?)</small>
+            </div>
+            <div class="form-group">   
+                <label for="dob">Date of Birth:</label>
+                <input type="text" class="form-control" id="dob" placeholder="YYYY-MM-DD" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result">
+            <h3 id="resultMessage"></h3>
+            <p id="userInfo"></p>
+        </div>
+        <img src="M LOGO.png" alt="BMW M LOGO" class="m-logo">
+    </div>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const dob = document.getElementById('dob').value;
+
+            let errorMessage = '';
+
+            if (!firstName) 
+            {
+                errorMessage += 'First Name is required.<br>';
+            }
+
+            if (!lastName) 
+            {
+                errorMessage += 'Last Name is required.<br>';
+            }
+
+            if (!email)
+            {
+                errorMessage += 'Email Address is required.<br>';
+            }
+
+            if (!password)
+            {
+                errorMessage += 'Password is required.<br>';
+            }
+
+            else if (!/[!?]/.test(password)) //Password must have special cases like "!" or "?"
+            {
+                errorMessage += 'Password must contain a special character (! or ?).<br>';
+            }
+
+            if (!dob)
+            {
+                errorMessage += 'Date of Birth is required.<br>';
+            }
+           
+            {
+                const user = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: '*'.repeat(password.length),
+                    dob: dob
+                };
+  
+                document.getElementById('resultMessage').innerHTML = 'Registration Successful!';
+                document.getElementById('resultMessage').classList.remove('text-danger');
+                document.getElementById('resultMessage').classList.add('text-success');
+                document.getElementById('userInfo').innerHTML = `
+                    <p>First Name: ${user.firstName}</p>
+                    <p>Last Name: ${user.lastName}</p>
+                    <p>Email: ${user.email}</p>
+                    <p>Password: ${user.password}</p>
+                    <p>Date of Birth: ${user.dob}</p>
+                `;
+                document.getElementById('result').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
