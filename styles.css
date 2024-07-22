@@ -1,0 +1,64 @@
+body { /*Background of the page & Card*/
+    font-family: Arial, sans-serif;
+    background-color: rgb(196, 238, 233);
+}
+
+.card {/*Card design*/
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 7px 7px 10px;
+    margin-bottom: 20px;
+}
+
+.card-title { /* Character Name on Card */
+    font-weight: bolder;
+}
+
+.col-md-4 { /* The card position when you click 'view details' */ 
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-custom { /* View Details Button at the bottom of the cards*/
+    background-color: rgb(14, 144, 138);
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
+    margin-bottom: 0px;
+
+}
+
+.navbar-brand { /* Rick and Morty bar at the top */
+    font-weight: bolder;
+    font-size: 25px;    
+    background-color: rgb(14, 144, 138);
+    min-width: 100%;
+    margin-left: -16px;
+    text-decoration: underline;
+}
+
+.container { /* Data inside the card: Name, Species,  Status, Gender, Origin, Location */
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.characterInput { /* Search Bar */
+    margin: 20px;
+    border-radius: 5px;
+}
+
+button[type="submit"] {  /* Search Button */
+    background-color: rgb(14, 144, 138);
+    color: white;
+    border: none;
+}
+
+#characters > p { /* Error Message if character doesn't exist */
+    color: red;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;   
+}
